@@ -2,7 +2,8 @@ import torch
 import torch.nn as nn
 from typing import Sequence
 from monai.utils import ensure_tuple_rep
-from blocks import Conv, Down, UpCat, TwoConv
+from monai.networks.layers.factories import Conv
+from blocks import Down, UpCat, TwoConv
 from time_embedding import get_sinusoidal_positional_encoding, resize_and_project_time_embedding
 from ConvLSTMCell import ConvLSTMCell3D
 
