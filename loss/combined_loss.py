@@ -1,11 +1,11 @@
 import torch
 import torch.nn.functional as F
 from pytorch_msssim import ssim
-import .perceptual as ploss
+from .perceptual import MedicalNetPerceptualSimilarity
 
 loss_L1 = torch.nn.L1Loss()
 loss_SSIM = lambda x, y: 1 - ssim(x, y)
-loss_PP = ploss.MedicalNetPerceptualSimilarity()
+loss_PP = MedicalNetPerceptualSimilarity()
 
 def gradient_difference_loss(prediction, target):
     def compute_gradient(tensor):
