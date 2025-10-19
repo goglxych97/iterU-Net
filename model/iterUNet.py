@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from typing import Sequence
+from typing import Sequence, Union
 from monai.utils import ensure_tuple_rep
 from monai.networks.layers.factories import Conv
 from .blocks import Down, UpCat, TwoConv
@@ -15,12 +15,12 @@ class Baseline_IUnet(nn.Module):
         in_channels: int = 2,
         out_channels: int = 1,
         features: Sequence[int] = (32, 32, 64, 128, 256, 32),
-        act: str | tuple = ("LeakyReLU", {"negative_slope": 0.1, "inplace": True}),
-        norm: str | tuple = ("instance", {"affine": True}),
+        act: Union[str, tuple] = ("LeakyReLU", {"negative_slope": 0.1, "inplace": True}),
+        norm: Union[str, tuple] = ("instance", {"affine": True}),
         bias: bool = True,
-        dropout: float | tuple = 0.0,
+        dropout: Union[float, tuple] = 0.0,
         upsample: str = "deconv",
-        num_iterations: int = 4,  #0,1->2 #0,2->3 #0,3->4 #0,4->5
+        num_iterations: int = 4,  # 0,1->2 #0,2->3 #0,3->4 #0,4->5
         time_embedding_dim: int = 128,
     ):
         super().__init__()
