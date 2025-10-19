@@ -25,7 +25,6 @@ class Baseline_IUnet(nn.Module):
     ):
         super().__init__()
         fea = ensure_tuple_rep(features, 6)
-        print(f"BasicUNet features: {fea}.")
         
         self.num_iterations = num_iterations
         self.time_embedding_dim = time_embedding_dim
@@ -79,10 +78,7 @@ class Baseline_IUnet(nn.Module):
             
             d0 = self.conv_0(torch.cat((x_pre, x_post,), axis=1))
             hidden_state, cell_state = self.conv_lstm(d0, (hidden_state, cell_state) if hidden_state is not None else None)
-            
-            d0_emd = resize_and_project_time_embedding(self.mtp0(time_emb), d0.shape[2:], self.time_projection0)
-            d0 = hidden_state+d0_emd
-            d1 = self.down_1(d0)
+            d0 = hidden_state
             
             d0_emd = resize_and_project_time_embedding(self.mtp0(time_emb), d0.shape[2:], self.time_projection0)
             d0 = d0+d0_emd
