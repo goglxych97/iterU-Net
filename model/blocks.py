@@ -1,11 +1,3 @@
-# ------------------------------------------------------------------------------
-# Source: MONAI Project (https://github.com/Project-MONAI/MONAI)
-# File: monai/networks/nets/basic_unet.py
-# License: Apache License, Version 2.0
-#          http://www.apache.org/licenses/LICENSE-2.0
-#
-# This file is copied from the MONAI project.
-# ------------------------------------------------------------------------------
 # Copyright (c) MONAI Consortium
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
