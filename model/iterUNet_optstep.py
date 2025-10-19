@@ -8,7 +8,7 @@ from .time_embedding import get_sinusoidal_positional_encoding, resize_and_proje
 from .ConvLSTMCell import ConvLSTMCell3D
 
 
-class Baseline_IUnet(nn.Module):
+class iterUNet_opt(nn.Module):
     def __init__(
         self,
         spatial_dims: int = 3,
