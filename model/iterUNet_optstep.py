@@ -12,6 +12,7 @@ class iterUNet_opt(nn.Module):
     def __init__(
         self,
         spatial_dims: int = 3,
+        in_channels: int = 2,
         out_channels: int = 1,
         features: Sequence[int] = (32, 32, 64, 128, 256, 32),
         act: Union[str, tuple] = ("LeakyReLU", {"negative_slope": 0.1, "inplace": True}),
@@ -47,7 +48,7 @@ class iterUNet_opt(nn.Module):
         self.conv_lstm = ConvLSTMCell3D(fea[0], fea[0])
             
         # Encoder
-        self.conv_0 = TwoConv(spatial_dims, 2, fea[0], act, norm, bias, dropout)
+        self.conv_0 = TwoConv(spatial_dims, in_channels, fea[0], act, norm, bias, dropout)
         self.down_1 = Down(spatial_dims, fea[0], fea[1], act, norm, bias, dropout)
         self.down_2 = Down(spatial_dims, fea[1], fea[2], act, norm, bias, dropout)
         self.down_3 = Down(spatial_dims, fea[2], fea[3], act, norm, bias, dropout)
