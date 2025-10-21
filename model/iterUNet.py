@@ -12,7 +12,6 @@ class iterUNet(nn.Module):
     def __init__(
         self,
         spatial_dims: int = 3,
-        in_channels: int = 2,
         out_channels: int = 1,
         features: Sequence[int] = (32, 32, 64, 128, 256, 32),
         act: Union[str, tuple] = ("LeakyReLU", {"negative_slope": 0.1, "inplace": True}),
